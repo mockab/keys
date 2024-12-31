@@ -1,8 +1,9 @@
 #!/bin/bash
 
-# Check for root privileges
-if [ "$EUID" -ne 0 ]; then
-    error_exit "This script must be run as root." 1
+# Ensure the script is run as root
+if [[ $EUID -ne 0 ]]; then
+   echo "This script must be run as root or with sudo privileges"
+   exit 1
 fi
 
 # Define variables
